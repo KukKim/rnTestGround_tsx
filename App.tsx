@@ -7,11 +7,13 @@ import {
   useColorScheme
 } from 'react-native';
 
+import { Provider } from 'react-redux'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationContainer } from '@react-navigation/native';
 
-import { HomeScreen, Teest1Screen, Test1Screen } from './src/screens'
+import { HomeScreen, Test1Screen, ReduxTestScreen } from './src/screens'
+import store from './src/redux/store'
 
 // type SectionProps = PropsWithChildren<{
 //   title: string;
@@ -60,14 +62,18 @@ import { HomeScreen, Teest1Screen, Test1Screen } from './src/screens'
 
 export default function App() {
 
-const Stack = createNativeStackNavigator(); 
+  const Stack = createNativeStackNavigator(); 
+  
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Test1" component={Test1Screen} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Test1" component={Test1Screen} />
+          <Stack.Screen name="ReduxTest" component={ReduxTestScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

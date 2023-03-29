@@ -14,6 +14,12 @@ export default function HomeScreen(props) {
             props.navigation.navigate('Test1')
           }}
         />
+        <Button
+          title='ReduxTest'
+          onPress={() => {
+            props.navigation.navigate('ReduxTest')
+          }}
+        />
       </SafeAreaView>
     );
 }
